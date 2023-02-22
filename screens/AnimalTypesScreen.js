@@ -1,15 +1,19 @@
 import { FlatList } from "react-native";
 import { Tile } from "react-native-elements";
+import { useState } from "react";
+import { ANIMALTYPES } from '../shared/ANIMALTYPES';
 
-const AnimalTypesScreen = (props) => {
-    const {animalTypes} = props;
+const AnimalTypesScreen = ({ navigation }) => {
+    const [animalTypes, setAnimalTypes] = useState(ANIMALTYPES);
 
     const renderAnimalItem = ({ item: animal }) => {
         return (
             <Tile
                 title={'Available ' + animal.animalType}
                 imageSrc={animal.image}
-                onPress={() => props.onPress('animal.animalIndex')}
+                onPress={
+                    () => {navigation.navigate('Animals', { animal })}
+                }
                 featured
             />
         )

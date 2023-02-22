@@ -19,9 +19,16 @@ const AnimalNavigator = () => {
             }}
         >
             <Stack.Screen
+                name='AnimalType'
+                component={AnimalTypesScreen}
+                options={{ title: 'Animal Type' }}
+            />
+            <Stack.Screen
                 name='Animals'
                 component={AvailableAnimals}
-                options={{ title: 'Available Animals' }}
+                options={({ route }) => ({
+                    title: 'Available ' + route.params.animal.animalType
+                })}
             />
             <Stack.Screen
                 name='AnimalInfo'
