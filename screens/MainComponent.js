@@ -1,59 +1,52 @@
-import { Platform, View } from 'react-native';
-import { Constants } from 'expo-constants';
-import AvailableDogs from './AvailableDogs';
-import AnimalInfoScreen from './AnimalInfoScreen';
+import { View, Platform } from 'react-native';
+import Constants from 'expo-constants';
 import { createStackNavigator } from '@react-navigation/stack';
-import { useState } from 'react';
-import { ANIMALS } from '../shared/ANIMALS';
+import AvailableAnimals from './AvailableAnimals';
+import AnimalInfoScreen from './AnimalInfoScreen';
 import AnimalTypesScreen from './AnimalTypesScreen';
 
-// const AnimalNavigator = () => {
-//     const Stack = createStackNavigator();
-
-//     return (
-//         <Stack.Navigator
-//             initialRouteName='Animals'
-//             screenOptions={{
-//                 headerStyle: {
-//                     backgroundColor: 'red'
-//                 },
-//                 headerTintColor: '#fff'
-//             }}
-//         >
-//             <Stack.Screen
-//                 name='Animals'
-//                 component={AvailableDogs}
-//                 options={{ title: 'Available Dogs' }}
-//             />
-//             <Stack.Screen
-//                 name='Dogs'
-
-//         </Stack.Navigator>
-//     )
-// }
-
-const Main = () => {
-    const [animals, setAnimals] = useState(ANIMALS);
-    const [selectedAnimalId, setSelectedAnimalId] = useState();
+const AnimalNavigator = () => {
+    const Stack = createStackNavigator();
 
     return (
-        <View style={{ flex: 1 }}>
-            {/* <AvailableDogs
-                animals={animals}
-                onPress={(animalId) => setSelectedAnimalId(animalId)}
+        <Stack.Navigator
+            initialRouteName='Available Animals'
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: '#5637DD'
+                },
+                headerTintColor: '#fff'
+            }}
+        >
+            <Stack.Screen
+                name='Animals'
+                component={AvailableAnimals}
+                options={{ title: 'Available Animals' }}
             />
-            <AnimalInfoScreen
-                animal={
-                    animals.filter(
-                        (animal) => animal.id === selectedAnimalId
-                    )[0]
-                }
-            /> */}
-            <AnimalTypesScreen />
+            <Stack.Screen
+                name='AnimalInfo'
+                component={AnimalInfoScreen}
+                options={({ route}) => ({
+                    title: route.params.animal.name
+                })}
+            />
+        </Stack.Navigator>
+    )
+}
+
+const Main = () => {
+
+    return (
+        <View
+            style={{
+                flex: 1,
+                paddingTop:
+                    Platform.OS ==='ios' ? 0 : Constants.statusBarHeight
+            }}
+        >
+            <AnimalNavigator />
         </View>
     );
-
-
 };
 
 export default Main;

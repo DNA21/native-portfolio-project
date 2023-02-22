@@ -1,7 +1,8 @@
 import RenderAnimals from '../features/animals/RenderAnimals';
 
-const AnimalInfoScreen = (props) => {
-    return <RenderAnimals animal={props.animal} />;
+const AnimalInfoScreen = ({ route }) => {
+    const { animal } = route.params;
+    return <RenderAnimals animal={animal} />;
 };
 
 export default AnimalInfoScreen;
