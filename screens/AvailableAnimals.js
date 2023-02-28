@@ -3,8 +3,9 @@ import { Avatar, ListItem } from 'react-native-elements';
 import { useState } from 'react';
 import { ANIMALS } from '../shared/ANIMALS';
 
-const AvailableAnimals = ({ navigation }) => {
+const AvailableAnimals = ({ route, navigation }) => {
     const [animals, setAnimals] = useState(ANIMALS);
+    const { animal } = route.params;
 
     const renderAnimalItem = ({ item: animal }) => {
         return (
@@ -21,7 +22,7 @@ const AvailableAnimals = ({ navigation }) => {
     };
     return (
         <FlatList
-            data={animals}
+            data={animals.filter((ani) => ani.animalType === animal.animalIndex )}
             renderItem={renderAnimalItem}
             keyExtractor={(item) => item.id.toString()}
         />
