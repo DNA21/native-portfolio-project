@@ -7,6 +7,8 @@ import AvailableAnimals from './AvailableAnimals';
 import AnimalInfoScreen from './AnimalInfoScreen';
 import AnimalTypesScreen from './AnimalTypesScreen';
 import HomeScreen from './HomeScreen';
+import AboutScreen from './AboutScreen';
+import ContactScreen from './ContactScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -37,7 +39,7 @@ const HomeNavigator = () => {
             />
         </Stack.Navigator>
     )
-}
+};
 
 const AnimalNavigator = () => {
     const Stack = createStackNavigator();
@@ -78,7 +80,54 @@ const AnimalNavigator = () => {
             />
         </Stack.Navigator>
     )
-}
+};
+
+const AboutNavigator = () => {
+    const Stack = createStackNavigator();
+
+    return(
+        <Stack.Navigator screenOptions={screenOptions}>
+            <Stack.Screen
+                name='About'
+                component={AboutScreen}
+                options={({ navigation }) => ({
+                    headerLeft: () => (
+                        <Icon
+                            name='info'
+                            type='MaterialIcons'
+                            iconStyle={styles.stackIcon}
+                            onPress={() => navigation.toggleDrawer()}
+                        />
+                    )
+                })}
+            />
+        </Stack.Navigator>
+    )
+};
+
+const ContactNavigator = () => {
+    const Stack = createStackNavigator();
+
+    return(
+        <Stack.Navigator screenOptions={screenOptions}>
+            <Stack.Screen
+                name='Contact'
+                component={ContactScreen}
+                options={({ navigation }) => ({
+                    title: 'Contact Us',
+                    headerLeft: () => (
+                        <Icon
+                            name='card-account-details'
+                            type='material-community'
+                            iconStyle={styles.stackIcon}
+                            onPress={() => navigation.toggleDrawer()}
+                        />
+                    )
+                })}
+            />
+        </Stack.Navigator>
+    )
+};
 
 const Main = () => {
 
@@ -119,6 +168,37 @@ const Main = () => {
                             <Icon
                                 name='pets'
                                 type='MaterialIcons'
+                                size={24}
+                                iconStyle={{ width: 24 }}
+                                color={color}
+                            />
+                        )
+                    }}
+                />
+                <Drawer.Screen
+                    name='About'
+                    component={AboutNavigator}
+                    options={{
+                        drawerIcon: ({ color }) => (
+                            <Icon
+                                name='info'
+                                type='MaterialIcons'
+                                size={24}
+                                iconStyle={{ width: 24 }}
+                                color={color}
+                            />
+                        )
+                    }}
+                />
+                <Drawer.Screen
+                    name='Contact'
+                    component={ContactNavigator}
+                    options={{
+                        title: 'Contact Us',
+                        drawerIcon: ({ color }) => (
+                            <Icon
+                                name='card-account-details'
+                                type='material-community'
                                 size={24}
                                 iconStyle={{ width: 24 }}
                                 color={color}
