@@ -1,4 +1,4 @@
-// import winston from '../assets/img/winstonCat.jpg'
+import winston from '../assets/img/winstonCat.jpg'
 import otho from '../assets/img/othoCat.jpeg'
 import charlieBrown from '../assets/img/charlieBrownCat.jpeg';
 import barracuda from '../assets/img/barracudaCat.jpeg';
@@ -11,7 +11,7 @@ export const ANIMALS = [
     {
         id: 0,
         name: 'Winston',
-        // image: winston,
+        image: winston,
         animalType: 0,
         birthday: 'June 2020',
         sex: 'Male',

@@ -1,4 +1,5 @@
-import { View, Platform } from 'react-native';
+import { View, Platform, StyleSheet } from 'react-native';
+import { Icon } from 'react-native-elements';
 import Constants from 'expo-constants';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -22,7 +23,17 @@ const HomeNavigator = () => {
             <Stack.Screen
                 name='Home'
                 component={HomeScreen}
-                options={{title: 'Home'}}
+                options={({ navigation }) => ({
+                    title: 'Home',
+                    headerLeft: () => (
+                        <Icon
+                            name='home'
+                            type='MaterialIcons'
+                            iconStyle={styles.stackIcon}
+                            onPress={() => navigation.toggleDrawer()}
+                        />
+                    )
+                })}
             />
         </Stack.Navigator>
     )
@@ -39,7 +50,17 @@ const AnimalNavigator = () => {
             <Stack.Screen
                 name='AnimalType'
                 component={AnimalTypesScreen}
-                options={{ title: 'Animal Type' }}
+                options={({ navigation }) => ({
+                    title: 'Animal Type',
+                    headerLeft: () => (
+                        <Icon
+                            name='pets'
+                            type='MaterialIcons'
+                            iconStyle={styles.stackIcon}
+                            onPress={() => navigation.toggleDrawer()}
+                        />
+                    )
+                })}
             />
             <Stack.Screen
                 name='Animals'
@@ -76,16 +97,46 @@ const Main = () => {
                 <Drawer.Screen
                     name='Home'
                     component={HomeNavigator}
-                    options={{ title: 'Home' }}
+                    options={{
+                        title: 'Home',
+                        drawerIcon: ({ color }) => (
+                            <Icon
+                                name='home'
+                                type='MaterialIcons'
+                                size={24}
+                                iconStyle={{ width: 24 }}
+                                color={color}
+                            />
+                        )
+                    }}
                 />
                 <Drawer.Screen
                     name='AvailableAnimals'
                     component={AnimalNavigator}
-                    options={{ title: 'Available Animals' }}
+                    options={{
+                        title: 'Available Animals',
+                        drawerIcon: ({ color }) => (
+                            <Icon
+                                name='pets'
+                                type='MaterialIcons'
+                                size={24}
+                                iconStyle={{ width: 24 }}
+                                color={color}
+                            />
+                        )
+                    }}
                 />
             </Drawer.Navigator>
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    stackIcon: {
+        marginLeft: 10,
+        color: '#fff',
+        fontSize: 24
+    }
+});
 
 export default Main;
