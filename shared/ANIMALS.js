@@ -6,6 +6,7 @@ import apollo from '../assets/img/apolloDog.jpg';
 import charlie from '../assets/img/charlieDog.jpg';
 import kaido from '../assets/img/kaidoDog.jpg';
 import nande from '../assets/img/nandeDog.jpg';
+import theo from '../assets/img/theoCat.jpg'
 
 export const ANIMALS = [
     {
@@ -111,5 +112,18 @@ export const ANIMALS = [
         arrival: '',
         background: 'Meet Nande! This peppy puppy is ready to steal your heart! Active, affectionate and as friendly as can be—what’s not to love? Nande is a happy-go-lucky girl who enjoys playing the day away with her siblings, food enrichment items like peanut butter Kongs and becoming friends with staff and volunteers. Are you ready to become friends with Nande?',
         featured: false
-    }
+    },
+    {
+        id: 8,
+        name: 'Theo',
+        image: theo,
+        animalType: 0,
+        birthday: 'May 2019',
+        sex: 'Male',
+        breed: 'Maine Coon',
+        weight: '22 lbs',
+        arrival: '',
+        background: "Theo is a loveable giant. He is 22 pounds but doesn't realize it! He may take a little to come around. But when he does, expect non stop affection!",
+        featured: true
+    },
 ];

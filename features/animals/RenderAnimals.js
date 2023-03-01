@@ -5,11 +5,12 @@ const RenderAnimals = ({ animal }) => {
     if (animal) {
         return (
             <Card containerStyle={{ padding: 0 }}>
-                <Card.Image source={animal.image}>
-                    <View style={{ justifyContent: 'center', flex: 1 }}>
+                <Card.Image source={animal.image} style={{ height: 300 }}>
+                    <View style={{ justifyContent: 'flex-end', flex: 1 }}>
                         <Text
                             style={{
                                 color: 'white',
+                                backgroundColor: 'rgba(0, 0, 0, 0.4)',
                                 textAlign: 'center',
                                 fontSize: 20
                             }}
